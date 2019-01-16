@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8 form group">
+            <input #termino type="text" (keyup)="onSearch(termino.value)" class="form-control" placeholder="Buscar artista">
+        </div>
+    </div>
+    <!-- 
+    <div class="row" *ngIf="showLoading">
+        <div class="col-md-12 form-group loading-icon">
+            <div class="lds-dual-ring"></div>
+            <span>Cargado...</span>
+        </div>
+    </div> -->
+
+    <div class="row m-5">
+        <div class="col-md-12 form-group">
+            <div class="card-columns">
+                <div class="card" *ngFor="let artist of artists">
+                    <img [src]="artist.mainImage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ artist.name }}</h5>
+                        <div class="generos">
+                            <span *ngFor="let genre of artist.genres" class="badge badge-success">{{ genre }}</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 form-group">
+                                <label>Populatiry</label> {{ artist.popularity }} %
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 form-group">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
