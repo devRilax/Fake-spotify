@@ -1,3 +1,24 @@
-<p>
-  artitsta works!
-</p>
+
+<div class="row" *ngIf="artist">
+
+  <div class="col-md-6 form-group">
+  
+    <div class="card">
+      <div class="card-header">
+        {{ artist.name }}
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer class="blockquote-footer">Followers<cite title="Source Title">{{ artist.followers.total }}</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-6 form-group">
+    <img [src]="artist.images[0].url" class="img-fluid" alt="Responsive image">
+  </div>
+
+</div>

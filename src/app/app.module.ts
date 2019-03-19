@@ -12,6 +12,9 @@ import { NavbarComponent } from './components/common/navbar/navbar.component';
 
 //Rutas
 import { ROUTES } from './app-routing.module';
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { CardsComponent } from './components/cards/cards.component';
+import { LoadingComponent } from './components/common/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ROUTES } from './app-routing.module';
     HomeComponent,
     SearchComponent,
     ArtitstaComponent,
-    NavbarComponent
+    NavbarComponent,
+    NoimagePipe,
+    CardsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

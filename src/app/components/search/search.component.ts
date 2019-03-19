@@ -10,7 +10,6 @@ export class SearchComponent implements OnInit {
 
   constructor( private spotifyService: SpotifyService ) {  }
 
-  private unknownImage: string = "https://vignette.wikia.nocookie.net/marsargo/images/5/52/Unknown.jpg/revision/latest?cb=20170904102656"
   artists: any[] = []
   showLoading: boolean = false;
   
@@ -21,10 +20,7 @@ export class SearchComponent implements OnInit {
     this.showLoading = true
     this.spotifyService.getArtistByTermine(termine) 
      .subscribe( (data: any) => {
-       this.artists = data.map( item => {
-        item.mainImage = item.images.length > 1 ? item.images[0].url : this.unknownImage
-        return item
-       })
+       this.artists = data
        this.showLoading = false
      })
   }
