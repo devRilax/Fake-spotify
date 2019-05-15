@@ -4,18 +4,16 @@ import { NgOnChangesFeature } from '@angular/core/src/render3';
 
 
 @Component({
-  selector: 'app-cards',
+  selector: 'card',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css']
 })
-export class CardsComponent implements OnInit ,OnChanges, OnDestroy {
+export class CardsComponent implements OnInit ,OnChanges {
 
-  @Input() items: any[] = [];
-  @Input() isRelease: boolean = false
-  @Input() isArtist: boolean = false
-
+  @Input() artist: any
+  @Input() isrelease: boolean = false
+  @Input() isartist: boolean = false
   
-
   constructor(private router : Router) { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -28,10 +26,5 @@ export class CardsComponent implements OnInit ,OnChanges, OnDestroy {
 
   showArtist(artist:any){
     this.router.navigate(['/artist', artist.id])
-  }
-
-  ngOnDestroy() {
-    this.isRelease = false;
-    this.isArtist = false
   }
 }

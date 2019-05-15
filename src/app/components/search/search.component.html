@@ -13,11 +13,11 @@
    </div>
 
 
-    <div class="row m-5" *ngIf="!showLoading">
+     <div class="row m-5" *ngIf="!showLoading">
         <div class="col-md-12 form-group">
-           <app-cards [items]="artists"></app-cards>
+           <card *ngFor="let result of artists" [artist]="result"></card>
         </div>
     </div>
-
+ 
 
 </div>

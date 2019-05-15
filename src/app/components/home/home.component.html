@@ -1,4 +1,7 @@
 
 <app-loading *ngIf="showLoading"></app-loading>
 
-<app-cards [items]="newReleases"></app-cards>
+
+<card *ngFor="let artist of newReleases" 
+       [artist]="artist" 
+       [isrelease]="false"></card>
