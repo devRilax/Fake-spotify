@@ -9,7 +9,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class ArtitstaComponent implements OnInit {
 
-   private id: any;
+   private id: string;
    artist : any;
 
   constructor( private _activeRoute : ActivatedRoute,
@@ -29,6 +29,7 @@ export class ArtitstaComponent implements OnInit {
     this._spotifyService.getArtistById(id)
     .subscribe( (data: any) => {
       this.artist = data;
+      err => console.log(err)
     })
   }
 

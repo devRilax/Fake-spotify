@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { map } from 'rxjs/operators'
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
+import { map, catchError } from 'rxjs/operators'
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class SpotifyService {
     const requestURL = `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQD0h9-ugZhR6uInry3DYTd-5_Z0ywFMHdWKAe9XuEFgUAftlLJafeGP5H8pme4NEOW9TLG16iWjlQGv62o'
+      'Authorization': 'Bearer BQAuPwojcLQDvI2dsa-HZCq3X0qfJcHYfOwpGrt3zNd1-gHNS1yogZtHOFEBUIJhXXqDUaOfcvCjyhhaAJU'
     }); 
 
     return this.http.get(requestURL, { headers })
@@ -39,7 +40,18 @@ export class SpotifyService {
     return this.buildQuery(`artists/${ id }`)
      .pipe( 
           map( data => 
-            data)
+            data),
+            catchError(this.handleError)
       );
+  }
+
+  handleError(error : HttpErrorResponse) {
+    if(error.error instanceof ErrorEvent) {
+      console.log('error y wea')
+    } else {
+      console.log('error hAcKEND')
+    }
+
+    return throwError ('algún error')
   }
 }
