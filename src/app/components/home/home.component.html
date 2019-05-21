@@ -1,7 +1,6 @@
+<app-loading *ngIf="showLoading">
+</app-loading>
 
-<app-loading *ngIf="showLoading"></app-loading>
-
-
-<card *ngFor="let artist of newReleases" 
-       [artist]="artist" 
-       [isrelease]="false"></card>
+<div class="cards__items">
+    <card *ngFor="let artist of newReleases" [artist]="artist" [isrelease]="false"></card>
+</div>

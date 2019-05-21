@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
+import { getToken } from '@angular/router/src/utils/preactivation';
 
 @Component({
   selector: 'app-home',
@@ -23,12 +24,11 @@ export class HomeComponent implements OnInit {
         })
         this.showLoading = false
         console.log(this.newReleases)
-     })
+     }) 
+
   }
 
   ngOnInit() {
   }
-
-
 
 }

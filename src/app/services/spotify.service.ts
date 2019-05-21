@@ -15,12 +15,12 @@ export class SpotifyService {
   }
   
   constructor(private http: HttpClient) { }
-
+  
   buildQuery(query: string) {
     const requestURL = `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQAuPwojcLQDvI2dsa-HZCq3X0qfJcHYfOwpGrt3zNd1-gHNS1yogZtHOFEBUIJhXXqDUaOfcvCjyhhaAJU'
+      'Authorization': 'Bearer BQBiPVSlF4LQDX23BIIrcnakcvmw1FjxP0Q0l59N8zNLyBDJHacrlaHj7O8CrCE0T-Nrm04cyv5VMMthL3M'
     }); 
 
     return this.http.get(requestURL, { headers })
