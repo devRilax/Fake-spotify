@@ -13,20 +13,40 @@ export class SpotifyService {
     newReleases: "browse/new-releases",
     getArtist: ''
   }
+
+  private accessToken:string
   
   constructor(private http: HttpClient) { }
   
   buildQuery(query: string) {
-    const requestURL = `https://api.spotify.com/v1/${ query }`;
+    const REQUEST_URL = `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQBiPVSlF4LQDX23BIIrcnakcvmw1FjxP0Q0l59N8zNLyBDJHacrlaHj7O8CrCE0T-Nrm04cyv5VMMthL3M'
+      'Authorization': `Bearer ${ this.accessToken }`
     }); 
 
-    return this.http.get(requestURL, { headers })
+    return this.http.get(REQUEST_URL, { headers })
+  }
+
+  setToken() {
+    this.token()
+    .subscribe( (response: any) => {
+      if(response.successful) {
+        this.accessToken = response.data.access_token
+      }
+    })
+  }
+
+  token() {
+    const TOKEN_URL = 'https://localhost:44335/api/auth';
+
+    return this.http.get(TOKEN_URL)
+    .pipe( map( data => data ), catchError(this.handleError) )
   }
 
   getNewReleases() {
+    this.setToken();
+
     return this.buildQuery(this.api.newReleases)
      .pipe( map( data => data['albums'].items ))
   }
@@ -44,6 +64,7 @@ export class SpotifyService {
             catchError(this.handleError)
       );
   }
+
 
   handleError(error : HttpErrorResponse) {
     if(error.error instanceof ErrorEvent) {

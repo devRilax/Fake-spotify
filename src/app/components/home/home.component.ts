@@ -24,11 +24,12 @@ export class HomeComponent implements OnInit {
         })
         this.showLoading = false
         console.log(this.newReleases)
-     }) 
+     })  
 
   }
 
   ngOnInit() {
   }
+
 
 }
