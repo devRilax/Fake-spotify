@@ -29,7 +29,8 @@ export class ArtitstaComponent implements OnInit {
     this._spotifyService.getArtistById(id)
     .subscribe( (data: any) => {
       this.artist = data;
-      err => console.log(err)
+    }, (error:any) => {
+      console.log(error);
     })
   }
 

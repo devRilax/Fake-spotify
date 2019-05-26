@@ -20,10 +20,22 @@ export class SpotifyService {
     const requestURL = `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQAuPwojcLQDvI2dsa-HZCq3X0qfJcHYfOwpGrt3zNd1-gHNS1yogZtHOFEBUIJhXXqDUaOfcvCjyhhaAJU'
+      'Authorization': 'Bearer BQAVbosD8c4db9qpE2-R0MRZABSXKYZYYNlXpuOJQ-XL6PPKnp34SbHloID4dj1BjX1QX9VJns9ADpPVMpc'
     }); 
 
     return this.http.get(requestURL, { headers })
+  }
+
+   setToken() {
+    const tokenURL = 'https://localhost:44335/api/auth'
+    return this.http.get(tokenURL).pipe(
+      map(data => data),
+      catchError(this.handleError)
+    )
+  }
+
+  handleSuccess(data) {
+    
   }
 
   getNewReleases() {
@@ -42,6 +54,7 @@ export class SpotifyService {
           map( data => 
             data),
             catchError(this.handleError)
+            //map(success,error)
       );
   }
 
@@ -49,9 +62,11 @@ export class SpotifyService {
     if(error.error instanceof ErrorEvent) {
       console.log('error y wea')
     } else {
-      console.log('error hAcKEND')
+      console.log('error hackend')
     }
 
     return throwError ('algún error')
   }
+
+
 }
