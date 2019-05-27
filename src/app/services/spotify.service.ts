@@ -23,11 +23,7 @@ export class SpotifyService {
   buildQuery(query: string) {
     const REQUEST_URL = `https://api.spotify.com/v1/${ query }`;
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${ this.accessToken }`
-    }); 
-
-    return this.http.get(REQUEST_URL, { headers })
+    return this.http.get(REQUEST_URL)
   }
 
   token() {
