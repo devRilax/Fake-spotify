@@ -44,6 +44,18 @@ export class SpotifyService {
     .pipe( map( data => data ), catchError(this.handleError) )
   }
 
+   setToken() {
+    const tokenURL = 'https://localhost:44335/api/auth'
+    return this.http.get(tokenURL).pipe(
+      map(data => data),
+      catchError(this.handleError)
+    )
+  }
+
+  handleSuccess(data) {
+    
+  }
+
   getNewReleases() {
     this.setToken();
 
@@ -62,6 +74,7 @@ export class SpotifyService {
           map( data => 
             data),
             catchError(this.handleError)
+            //map(success,error)
       );
   }
 
@@ -70,9 +83,11 @@ export class SpotifyService {
     if(error.error instanceof ErrorEvent) {
       console.log('error y wea')
     } else {
-      console.log('error hAcKEND')
+      console.log('error hackend')
     }
 
     return throwError ('algún error')
   }
+
+
 }

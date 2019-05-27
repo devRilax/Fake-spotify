@@ -10,11 +10,28 @@ import { getToken } from '@angular/router/src/utils/preactivation';
 export class HomeComponent implements OnInit {
 
   newReleases:any[] = []
+  currentToken:string
   showLoading:boolean = false
   release: boolean = true
 
   constructor( private spotifyService: SpotifyService ) { 
 
+    
+  }
+
+  ngOnInit() {
+    this.login()
+  }
+
+  login() {
+    this.spotifyService.setToken()
+    .subscribe( (data: any) => {
+      sessionStorage.setItem('ACCESS_TOKEN', data.access_token)
+      this.getReleases()
+    })
+  }
+
+  getReleases() {
     this.showLoading = true
     this.spotifyService.getNewReleases()
      .subscribe( (data: any) => {
@@ -27,9 +44,4 @@ export class HomeComponent implements OnInit {
      })  
 
   }
-
-  ngOnInit() {
-  }
-
-
 }
