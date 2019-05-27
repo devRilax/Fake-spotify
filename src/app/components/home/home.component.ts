@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { getToken } from '@angular/router/src/utils/preactivation';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
   showLoading:boolean = false
   release: boolean = true
 
-  constructor( private spotifyService: SpotifyService ) { 
+  constructor( private spotifyService: SpotifyService,
+               private authService: AuthService ) { 
 
     
   }
@@ -24,10 +26,10 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    this.spotifyService.setToken()
-    .subscribe( (data: any) => {
-      sessionStorage.setItem('ACCESS_TOKEN', data.access_token)
-      this.getReleases()
+    this.authService.authenticate()
+    .subscribe( (response: any) => {
+     this.authService.setTokenAuthentication(response.data.access_token)
+     this.getReleases()
     })
   }
 

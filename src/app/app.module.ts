@@ -19,6 +19,7 @@ import { ROUTES } from './app-routing.module';
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
+import { InterceptorRequest } from './helpers/InterceptorRequest';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,10 @@ import { LoadingComponent } from './components/common/loading/loading.component'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorResponse,
+      multi: true
+    },{
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorRequest,
       multi: true
     }
   ],

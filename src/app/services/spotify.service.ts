@@ -18,6 +18,8 @@ export class SpotifyService {
   
   constructor(private http: HttpClient) { }
   
+  private baseURL: string = 'https://api.spotify.com/v1/'
+
   buildQuery(query: string) {
     const REQUEST_URL = `https://api.spotify.com/v1/${ query }`;
 
@@ -28,15 +30,6 @@ export class SpotifyService {
     return this.http.get(REQUEST_URL, { headers })
   }
 
-  setToken() {
-    this.token()
-    .subscribe( (response: any) => {
-      if(response.successful) {
-        this.accessToken = response.data.access_token
-      }
-    })
-  }
-
   token() {
     const TOKEN_URL = 'https://localhost:44335/api/auth';
 
@@ -44,22 +37,10 @@ export class SpotifyService {
     .pipe( map( data => data ), catchError(this.handleError) )
   }
 
-   setToken() {
-    const tokenURL = 'https://localhost:44335/api/auth'
-    return this.http.get(tokenURL).pipe(
-      map(data => data),
-      catchError(this.handleError)
-    )
-  }
-
-  handleSuccess(data) {
-    
-  }
 
   getNewReleases() {
-    this.setToken();
-
-    return this.buildQuery(this.api.newReleases)
+    let urlRequest = `https://api.spotify.com/v1/${ this.api.newReleases }`
+    return this.http.get(urlRequest)
      .pipe( map( data => data['albums'].items ))
   }
 
