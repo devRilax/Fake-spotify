@@ -1,5 +1,7 @@
 // ./app/interceptores/respuesta.interceptor.ts
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 import { HttpInterceptor, 
          HttpRequest, HttpHandler, 
@@ -12,6 +14,9 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class InterceptorResponse implements HttpInterceptor {
+
+    constructor(private router : Router){}
+
     intercept( request: HttpRequest<any>, 
                next: HttpHandler) : Observable<HttpEvent<any>> {
 
@@ -26,14 +31,15 @@ export class InterceptorResponse implements HttpInterceptor {
                 if (err instanceof HttpErrorResponse) {
                     switch (err.status) {
                         case 404:
+                            this.router.navigate(['/notfound'])
                             console.log('Página no encontrada!');
                             break;
                         default:
-                            console.log('Error respuesta (' + err.status + '): ' + err.statusText);
+                        console.log('s')
                             break;
                     }
                 }
             })
-        );
+        )
     }
 }

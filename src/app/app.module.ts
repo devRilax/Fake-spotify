@@ -20,6 +20,7 @@ import { NoimagePipe } from './pipes/noimage.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
 import { InterceptorRequest } from './helpers/InterceptorRequest';
+import { ErrorpageComponent } from './components/common/errorpage/errorpage.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { InterceptorRequest } from './helpers/InterceptorRequest';
     NavbarComponent,
     NoimagePipe,
     CardsComponent,
-    LoadingComponent
+    LoadingComponent,
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,
