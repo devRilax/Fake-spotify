@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-errorpage',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorpageComponent implements OnInit {
 
-  private imgPath : string = 'assets/img/page-not-found.png'
   
-  constructor() { }
+  constructor(private sanitizer:  DomSanitizer) { }
 
   ngOnInit() {
+    //this.imgPath = this.sanitizer.bypassSecurityTrustHtml("page-not-found.png")
+  }
+
+  getImgSecurePath(): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl('page-not-found.png')
   }
 
 }
