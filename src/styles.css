@@ -118,3 +118,25 @@ hr {
     display: flex;
     flex-direction: column;
 }
+
+.home--welcome__container {
+    display: flex;
+}
+
+.home--welcome__text {
+    font-size: 2.1em;
+    margin-left: 12px;
+}
+
+.home--welcome__img {
+    height: 50px;
+    width: 50px;
+}
+
+.grande {
+    font-size: 200px;
+}
+
+.m-top--20{
+    margin-top: 20px;
+}

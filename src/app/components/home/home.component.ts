@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
-import { getToken } from '@angular/router/src/utils/preactivation';
 import { AuthService } from 'src/app/services/auth.service';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: []
+  styles: ['/home.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
 
@@ -41,9 +43,9 @@ export class HomeComponent implements OnInit {
           item.mainImage = item.images[0].url
           return item
         })
-        this.showLoading = false
-        console.log(this.newReleases)
-     })  
-
+     },(error : any) => {
+      console.log('error aptirad');
+      
+    })  
   }
 }

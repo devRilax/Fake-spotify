@@ -1,8 +1,19 @@
 <div class="container">
-
     <div class="row">
+        <div class="col-md-12 home--welcome__container">
+            <img src="../../../../assets/img/spoti-logo.png" class="home--welcome__img" width="30" height="30" alt="">
+            <h2 class="home--welcome__text ">Buscador de artistas</h2>
+        </div>
+    </div>
+
+    <div class="row m-top--20">
         <div class="col-md-8 form group">
-            <input #termino type="text" (keyup)="onSearch(termino.value)" class="form-control" placeholder="Buscar artista">
+            <label>Ingrese el nombre de un artista...</label>
+            <input #termino 
+                   type="text" 
+                   (keyup)="onSearch(termino.value)"
+                   class="form-control" 
+                   placeholder="Buscar artista">
         </div>
     </div>
 
@@ -14,7 +25,7 @@
 
 
      <div class="row m-5" *ngIf="!showLoading">
-        <div class="col-md-12 form-group">
+        <div class="col-md-12 form-group card-columns">
            <card *ngFor="let result of artists" [artist]="result"></card>
         </div>
     </div>

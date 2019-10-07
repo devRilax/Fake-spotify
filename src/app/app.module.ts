@@ -17,7 +17,7 @@ import { InterceptorResponse } from './helpers/interceptorResponse'
 //Rutas
 import { ROUTES } from './app-routing.module';
 import { NoimagePipe } from './pipes/noimage.pipe';
-import { CardsComponent } from './components/cards/cards.component';
+import { CardComponent } from './components/card/card.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
 import { InterceptorRequest } from './helpers/InterceptorRequest';
 
@@ -29,7 +29,7 @@ import { InterceptorRequest } from './helpers/InterceptorRequest';
     ArtitstaComponent,
     NavbarComponent,
     NoimagePipe,
-    CardsComponent,
+    CardComponent,
     LoadingComponent
   ],
   imports: [

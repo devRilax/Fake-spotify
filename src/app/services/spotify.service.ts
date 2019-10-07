@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http'
 import { map, catchError } from 'rxjs/operators'
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,10 @@ export class SpotifyService {
   getNewReleases() {
     let urlRequest = `https://api.spotify.com/v1/${ this.api.newReleases }`
     return this.http.get(urlRequest)
-     .pipe( map( data => data['albums'].items ))
+     .pipe( map( data => 
+                 data['albums'].items ))
+                catchError(this.handleError)
+     
   }
 
   getArtistByTermine( termine: string ) {
@@ -58,9 +61,9 @@ export class SpotifyService {
 
   handleError(error : HttpErrorResponse) {
     if(error.error instanceof ErrorEvent) {
-      console.log('error y wea')
+      throwError('error')
     } else {
-      console.log('error hackend')
+      throwError('error')
     }
 
     return throwError ('algún error')

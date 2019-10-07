@@ -5,10 +5,10 @@ import { NgOnChangesFeature } from '@angular/core/src/render3';
 
 @Component({
   selector: 'card',
-  templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.css']
 })
-export class CardsComponent implements OnInit ,OnChanges {
+export class CardComponent implements OnInit ,OnChanges {
 
   @Input() artist: any
   @Input() isrelease: boolean = false

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { map, catchError } from 'rxjs/operators'
@@ -47,4 +48,11 @@ export class AuthService {
   }
 
 
+}
+
+export interface IAuthData {
+  access_token: String,
+  token_type: String,
+  expire_in: Int32Array
+  scope: String
 }
