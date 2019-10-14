@@ -5,7 +5,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 @Component({
   selector: 'app-artitsta',
   templateUrl: './artitsta.component.html',
-  styles: []
+  styleUrls: []
 })
 export class ArtitstaComponent implements OnInit {
 
@@ -13,11 +13,11 @@ export class ArtitstaComponent implements OnInit {
    artist : any;
 
   constructor( private _activeRoute : ActivatedRoute,
-               private _spotifyService : SpotifyService ) { 
+               private _spotifyService : SpotifyService ) {
 
     this._activeRoute.params.subscribe( param => {
-      this.id = param['id']
-    })
+      this.id = param['id'];
+    });
 
     this.getArtist(this.id);
   }
@@ -25,13 +25,13 @@ export class ArtitstaComponent implements OnInit {
   ngOnInit() {
   }
 
-  getArtist(id :string) {
+  getArtist(id: string) {
     this._spotifyService.getArtistById(id)
     .subscribe( (data: any) => {
       this.artist = data;
-    }, (error:any) => {
+    }, (error: any) => {
       console.log(error);
-    })
+    });
   }
 
 }

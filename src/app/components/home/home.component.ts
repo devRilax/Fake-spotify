@@ -7,45 +7,41 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: ['/home.component.css'],
+  styleUrls: ['/home.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
 
-  newReleases:any[] = []
-  currentToken:string
-  showLoading:boolean = false
-  release: boolean = true
+  newReleases: any[] = [];
+  currentToken: string;
+  showLoading: boolean = false;
+  release: boolean = true;
 
   constructor( private spotifyService: SpotifyService,
-               private authService: AuthService ) { 
-
-    
-  }
+               private authService: AuthService ) {}
 
   ngOnInit() {
-    this.login()
+    this.login();
   }
 
   login() {
     this.authService.authenticate()
     .subscribe( (response: any) => {
      this.authService.setTokenAuthentication(response.data.access_token)
-     this.getReleases()
-    })
+     this.getReleases();
+    });
   }
 
   getReleases() {
-    this.showLoading = true
+    this.showLoading = true;
     this.spotifyService.getNewReleases()
      .subscribe( (data: any) => {
         this.newReleases = data.map( item => {
-          item.mainImage = item.images[0].url
-          return item
-        })
-     },(error : any) => {
+          item.mainImage = item.images[0].url;
+          return item;
+        });
+     }, (error: any) => {
       console.log('error aptirad');
-      
-    })  
+    });
   }
 }

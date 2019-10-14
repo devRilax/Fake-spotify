@@ -10,10 +10,10 @@ import { NgOnChangesFeature } from '@angular/core/src/render3';
 })
 export class CardComponent implements OnInit ,OnChanges {
 
-  @Input() artist: any
-  @Input() isrelease: boolean = false
-  @Input() isartist: boolean = false
-  
+  @Input() artist: any;
+  @Input() isrelease: boolean = false;
+  @Input() isartist: boolean = false;
+
   constructor(private router : Router) { }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -24,7 +24,7 @@ export class CardComponent implements OnInit ,OnChanges {
 
   }
 
-  showArtist(artist:any){
-    this.router.navigate(['/artist', artist.id])
+  showArtist(artist: any){
+    this.router.navigate(['/artist', artist.id]);
   }
 }
