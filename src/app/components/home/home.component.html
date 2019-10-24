@@ -1,5 +1,3 @@
-<app-loading *ngIf="showLoading">
-</app-loading>
 
 <div class="row">
     <div class="col-md-12 home--welcome__container">
@@ -8,11 +6,14 @@
     </div>
 </div>
 
+<app-loading *ngIf="showLoading"
+              [mensaje]="'Cargando'">
+</app-loading>
+
 <div class="card-columns m-top--20">
-    <card *ngFor="let artist of newReleases" [artist]="artist" [isrelease]="false"></card>
+    <card *ngFor="let artist of newReleases" 
+          [artist]="artist" 
+          [isrelease]="false"></card>
 </div>
 
 
-<div class="d-flex--column">
-    <span>prueba columnas</span><span>Prueba columnas</span>
-</div>

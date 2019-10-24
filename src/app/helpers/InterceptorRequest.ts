@@ -9,14 +9,12 @@ export class InterceptorRequest implements HttpInterceptor {
   constructor(public authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Modificamos la URL de la petición para solicitar únicamente 10 elementos.
-
     let accesToken = this.authService.getToken();
 
     if(accesToken !== null) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${accesToken}22333`
+          Authorization: `Bearer ${accesToken}`
         }
       });
 

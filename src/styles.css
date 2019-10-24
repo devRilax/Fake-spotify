@@ -140,3 +140,20 @@ hr {
 .m-top--20{
     margin-top: 20px;
 }
+
+.flex-column--center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Fonts size*/
+
+.font-size--26px{
+    font-size: 26px;
+}
+
+/*Fonts colors*/
+.color-black {
+    color: black;
+}

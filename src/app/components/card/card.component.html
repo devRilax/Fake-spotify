@@ -2,11 +2,12 @@
   <div (click)="showArtist(artist)" class="card puntero">
     <img [src]="artist.images | noimage" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">{{ artist.name }}</h5>
-        <p class="card-body">
-            <label style="color: black;">Popularidad: {{ artist.popularity }}</label>
-            <span  *ngFor="let artist of artist.artists" class="badge badge-success">{{ artist.name }}</span>
-            <span *ngIf="isrelease"><label style="color: black;">mostrar si</label></span>
-        </p>
+        <h5 class="card-title">{{ artist.name }}</h5><hr class="color-black">
+        <div>
+            <ul>
+               <li class="color-black" *ngFor="let genero of artist.genres">{{ genero }} </li>
+            </ul>
+            
+        </div>
     </div>
 </div>

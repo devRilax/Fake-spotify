@@ -19,7 +19,9 @@
 
    <div class="row">
        <div class="col">
-        <app-loading class="m-5" *ngIf="showLoading"></app-loading>
+        <app-loading class="m-5" 
+                     *ngIf="showLoading"
+                     [mensaje]="'Cargando...'"></app-loading>
        </div>
    </div>
 

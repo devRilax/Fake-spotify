@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
           item.mainImage = item.images[0].url;
           return item;
         });
+        this.showLoading = false
      }, (error: any) => {
       console.log('error aptirad');
     });

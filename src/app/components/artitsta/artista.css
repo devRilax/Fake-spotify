@@ -1,0 +1,11 @@
+.artista-contenedor {
+    display: flex;
+}
+
+.artista-box-izquierdo {
+    width: 60%;
+}
+
+.artista-box-derecho {
+    width: 40%;
+}
