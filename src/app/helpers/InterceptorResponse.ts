@@ -10,6 +10,8 @@ import { HttpInterceptor,
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { Router } from '@angular/router';
+
 @Injectable()
 export class InterceptorResponse implements HttpInterceptor {
     intercept( request: HttpRequest<any>, 
@@ -28,6 +30,9 @@ export class InterceptorResponse implements HttpInterceptor {
                         case 404:
                             console.log('Página no encontrada!');
                             break;
+                        case 401:
+                                console.log('Sin autorización!');
+                                break;
                         default:
                             console.log('Error respuesta (' + err.status + '): ' + err.statusText);
                             break;

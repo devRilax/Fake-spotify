@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 
 
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit {
   release: boolean = true;
 
   constructor( private spotifyService: SpotifyService,
-               private authService: AuthService ) {}
+               private authService: AuthService,
+               private router : Router ) {}
 
   ngOnInit() {
     this.login();
@@ -42,7 +45,9 @@ export class HomeComponent implements OnInit {
         });
         this.showLoading = false
      }, (error: any) => {
-      console.log('error aptirad');
+       if(error.status == 401) {
+        this.router.navigate(['/login']);
+       }
     });
   }
 }

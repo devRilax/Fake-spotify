@@ -1,0 +1,24 @@
+.contenedor {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: #37ec37;
+    border-radius: 5px;
+    border-style: solid;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.contenedor .box input {
+    margin-bottom: 10px;
+}
