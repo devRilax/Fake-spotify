@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgOnChangesFeature } from '@angular/core/src/render3';
 
 
 @Component({

@@ -19,21 +19,17 @@ export class HomeComponent implements OnInit {
   showLoading: boolean = false;
   release: boolean = true;
 
+  username: string;
+  password: string;
+
   constructor( private spotifyService: SpotifyService,
-               private authService: AuthService,
                private router : Router ) {}
 
   ngOnInit() {
-    this.login();
+    this.getReleases();
   }
 
-  login() {
-    this.authService.authenticate()
-    .subscribe( (response: any) => {
-     this.authService.setTokenAuthentication(response.data.access_token)
-     this.getReleases();
-    });
-  }
+
 
   getReleases() {
     this.showLoading = true;
