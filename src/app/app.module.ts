@@ -12,22 +12,25 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtitstaComponent } from './components/artitsta/artitsta.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
-
+import { LayoutComponent } from './components/layout/layout.component'
 
 
 //Helpers
 import { InterceptorResponse } from './helpers/interceptorResponse'
 
+//Pipes
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
+
 //Rutas
 import { ROUTES } from './app-routing.module';
-import { NoimagePipe } from './pipes/noimage.pipe';
 import { CardComponent } from './components/card/card.component';
 import { LoadingComponent } from './components/common/loading/loading.component';
 import { InterceptorRequest } from './helpers/InterceptorRequest';
 import { LoginComponent } from './components/auth/login/login.component';
 
 //Scripts
-import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,11 @@ import { ToastrModule } from 'ngx-toastr'
     ArtitstaComponent,
     NavbarComponent,
     NoimagePipe,
+    DomseguroPipe,
     CardComponent,
     LoadingComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

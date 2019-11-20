@@ -18,7 +18,7 @@ export class SpotifyService {
   
   constructor(private http: HttpClient) { }
   
-  private baseURL: string = 'https://api.spotify.com/v1/'
+  private baseURL: string = 'https://api.spotify.com/v1/' 
 
   buildQuery(query: string) {
     const REQUEST_URL = `https://api.spotify.com/v1/${ query }`;
@@ -56,6 +56,14 @@ export class SpotifyService {
             catchError(this.handleError)
             //map(success,error)
       );
+  }
+
+  getTopTracksByArtistId(id : any) {
+    return this.buildQuery(`artists/${ id }/top-tracks?country=CL`)
+    .pipe(
+      map ( data => data ),
+      catchError(this.handleError)
+    )
   }
 
 

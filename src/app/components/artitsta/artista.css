@@ -1,11 +1,26 @@
+.titulo-artista {
+    text-align: center;
+    font-size: 80px;
+}
+
 .artista-contenedor {
     display: flex;
+    margin-top: 20px;
 }
 
 .artista-box-izquierdo {
-    width: 60%;
+    width: 40%;
+}
+
+.artista-box-izquierdo img {
+    width: 100%;
 }
 
 .artista-box-derecho {
-    width: 40%;
+    width: 60%;
+    margin-left: 20px;
+}
+
+.artista-box-derecho .tracks{
+    text-align: center;
 }

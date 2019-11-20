@@ -11,6 +11,7 @@ export class ArtitstaComponent implements OnInit {
 
    private id: string;
    artist : any;
+   topTracks: any[];
 
   constructor( private _activeRoute : ActivatedRoute,
                private _spotifyService : SpotifyService ) {
@@ -29,9 +30,23 @@ export class ArtitstaComponent implements OnInit {
     this._spotifyService.getArtistById(id)
     .subscribe( (data: any) => {
       this.artist = data;
+      this.getTopTracks();
     }, (error: any) => {
       console.log(error);
     });
+  }
+
+  getTopTracks() {
+    this._spotifyService.getTopTracksByArtistId(this.id)
+     .subscribe( (data: any) => {
+      this.topTracks = data.tracks
+     }, (error : any) => {
+      console.log(error)
+     });
+  }
+
+  getTrackUrl(trackId: any) {
+    return `https://open.spotify.com/embed/track/${trackId}`
   }
 
 }

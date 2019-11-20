@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { SpotifyService } from '../../services/spotify.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +11,11 @@ import { SpotifyService } from '../../services/spotify.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor( private spotifyService: SpotifyService ) {  }
+  readonly UNAUTHORIZED = 401
+
+  constructor( private spotifyService: SpotifyService,
+               private message: ToastrService,
+               private router : Router ) {  }
 
   artists: any[] = [];
   showLoading: boolean = false;
@@ -22,6 +29,11 @@ export class SearchComponent implements OnInit {
      .subscribe( (data: any) => {
        this.artists = data;
        this.showLoading = false;
+     }, (error : any) => {
+       if(error.status == this.UNAUTHORIZED) {
+        this.message.error('Session has expired')
+        this.router.navigate(["login"])
+       }
      });
   }
 

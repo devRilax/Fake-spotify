@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12 home--welcome__container">
         <img src="../../../../assets/img/spoti-logo.png" class="home--welcome__img" width="30" height="30" alt="">
-        <h2 class="home--welcome__text ">NEW RELEASES</h2>
+        <h2 class="home--welcome__text ">Últimas canciones</h2>
     </div>
 </div>
 
@@ -10,10 +10,14 @@
               [mensaje]="'Cargando'">
 </app-loading>
 
-<div class="card-columns m-top--20">
-    <card *ngFor="let artist of newReleases" 
-          [artist]="artist" 
-          [isrelease]="false"></card>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-columns m-top--20">
+            <card *ngFor="let artist of newReleases" 
+                  [artist]="artist" 
+                  [isrelease]="false"></card>
+        </div>
+    </div>
 </div>
 
 

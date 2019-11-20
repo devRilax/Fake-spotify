@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
     <div class="row">
         <div class="col-md-12 home--welcome__container">
             <img src="../../../../assets/img/spoti-logo.png" class="home--welcome__img" width="30" height="30" alt="">
@@ -27,7 +27,7 @@
 
 
      <div class="row m-5" *ngIf="!showLoading">
-        <div class="col-md-12 form-group card-columns">
+        <div class="col-md-12 card-columns">
            <card *ngFor="let result of artists" [artist]="result"></card>
         </div>
     </div>
