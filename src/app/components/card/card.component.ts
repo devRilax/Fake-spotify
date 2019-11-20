@@ -24,6 +24,6 @@ export class CardComponent implements OnInit ,OnChanges {
   }
 
   showArtist(artist: any){
-    this.router.navigate(['/artist', artist.id]);
+    this.router.navigate(['layouts/artist', artist.id]);
   }
 }

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       .subscribe( ( response: any ) => {
         if(response.successful) {
           this.authService.setTokenAuthentication(response.data.access_token)
-          this.router.navigate(["home"])
+          this.router.navigate(["layouts/home"])
         } else {
           this.message.error(response.message, "Autenticación fallida")
         }
