@@ -2,12 +2,21 @@
 <div class="contenedor"><!-- flex container -->
 
   <div class="box">
-    <input type="text"
-           class="form-control">
-    <input type="password"
-           class="form-control">
+    <form (ngSubmit)="auth(formulario)" #formulario="ngForm" novalidate>
+        <input type="text"
+               class="form-control"
+               name="username"
+               minlength="3"
+               ngModel="username">
 
-    <button class="btn btn-success">Login</button>
+        <input type="password"
+              class="form-control"
+              name="password"
+              ngModel="password">
+
+        <button class="btn btn-success" (click)="auth()">Login</button>
+    </form>
+    
   </div>
 
 </div>

@@ -19,8 +19,8 @@ export class AuthService {
 
     constructor(private http: HttpClient) {}
 
-    authenticate() {
-      const TOKEN_URL = 'https://localhost:44335/api/auth';
+    authenticate(username: string, password: string) {
+      const TOKEN_URL = `https://localhost:44335/api/auth/${username}/${password}`;
 
       return this.http.get(TOKEN_URL)
       .pipe( map( data => data ), catchError(this.handleError));
