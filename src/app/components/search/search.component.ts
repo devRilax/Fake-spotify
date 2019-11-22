@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
        this.showLoading = false;
      }, (error : any) => {
        if(error.status == this.UNAUTHORIZED) {
-        this.message.error('Session has expired')
+        this.message.warning('Sesión expirada')
         this.router.navigate(["login"])
        }
      });

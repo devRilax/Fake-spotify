@@ -17,6 +17,8 @@ import { LayoutComponent } from './components/layout/layout.component'
 
 //Helpers
 import { InterceptorResponse } from './helpers/interceptorResponse'
+import { CanActivateAuthGuard } from 'src/app/helpers/CanActivateAuthGuard';
+
 
 //Pipes
 import { NoimagePipe } from './pipes/noimage.pipe';
@@ -56,6 +58,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule
   ],
   providers: [
+    CanActivateAuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorResponse,
