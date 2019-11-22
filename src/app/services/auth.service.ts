@@ -28,11 +28,15 @@ export class AuthService {
 
     setTokenAuthentication(tkn: string) {
         this.accessToken = tkn;
-        localStorage.setItem('authToken', this.accessToken);
+        sessionStorage.setItem('authToken', this.accessToken);
     }
 
     getToken() {
-        return localStorage.getItem('authToken')
+        return sessionStorage.getItem('authToken');
+    }
+
+    cleanSession() {
+      sessionStorage.clear();
     }
 
     handleError(error : HttpErrorResponse) {

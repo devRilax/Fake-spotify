@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
+//Services
 import { SpotifyService } from '../../services/spotify.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+
 import { Router } from '@angular/router';
 
 
@@ -23,7 +27,8 @@ export class HomeComponent implements OnInit {
   password: string;
 
   constructor( private spotifyService: SpotifyService,
-               private router : Router ) {}
+               private router : Router,
+               private message: ToastrService ) {}
 
   ngOnInit() {
     this.getReleases();
@@ -42,6 +47,7 @@ export class HomeComponent implements OnInit {
         this.showLoading = false
      }, (error: any) => {
        if(error.status == 401) {
+        this.message.warning('Sesión expirada')
         this.router.navigate(['/login']);
        }
     });

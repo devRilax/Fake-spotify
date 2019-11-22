@@ -19,7 +19,12 @@
                placeholder="Ingrese su contraseña"
                [(ngModel)]="password" />
 
-        <button class="btn btn-success btn-block" (click)="auth()">Entrar</button>
+        <button class="btn btn-success btn-block" (click)="auth()">
+           <span *ngIf="!showLoading">Entrar</span>
+           <span *ngIf="showLoading">
+              <i class="fa fa-sync fa-spin fa-1x"></i>
+            </span>
+        </button>
     </form>
     
   </div>

@@ -14,9 +14,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  showLoading: boolean = false
   username: string;
   password: string;
-
 
   constructor(private message: ToastrService,
               private authService: AuthService,
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   auth() {
+    this.showLoading = true
     this.authService.authenticate(this.username, this.password)
       .subscribe( ( response: any ) => {
         if(response.successful) {
@@ -34,9 +35,11 @@ export class LoginComponent implements OnInit {
         } else {
           this.message.error(response.message, "Autenticación fallida")
         }
+        this.showLoading = false
       },
       ( error : any) => {
-        console.log(error)
+        this.showLoading = false
+        this.message.error("Ha ocurrido un error")
       } )
   }
 
